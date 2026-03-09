@@ -28,3 +28,14 @@ footer {
     margin-top: 60px;
     font-size: 14px;
 }
+
+
+nav{
+    background:#b300ff;
+    padding:15px 30px;
+    margin:0;
+}
+
+.hero{
+    margin:0;
+}

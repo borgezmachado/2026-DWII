@@ -13,6 +13,7 @@ $profissao    = "Estudante de Tecnologia";
 $curso        = "Técnico em Informática – IFPR";
 $pagina_atual = "inicio";
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -26,9 +27,10 @@ $pagina_atual = "inicio";
 
 <?php include 'includes/cabecalho.php'; ?>
 
+
 <div class="hero" style="background: linear-gradient(135deg, #b300ff, #b300ff); color: white; text-align: center; padding: 60px 20px;">
     
-    <h1 style="font-size: 2.5em; margin-bottom: 10px;">
+    <h1 style="font-size: 2.5em; margin: 0 0 10px 0;">
         <?php echo $nome; ?>
     </h1>
 

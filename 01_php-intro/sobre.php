@@ -25,6 +25,7 @@ $pagina_atual = "sobre";
 
 <?php include 'includes/cabecalho.php'; ?>
 
+
 <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
 
     <h1 style="color: #3b579d;">👤 Sobre mim</h1>

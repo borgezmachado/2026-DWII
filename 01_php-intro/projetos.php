@@ -1,3 +1,14 @@
+<!-- 01_php-intro/projetos.php 
+    Disciplina : Desenvolvimento Web II (DWII)
+    Aula : 03 - Arquitetura Web e Introdução ao PHP
+    Autor : Felipe Borges
+    Data : 02/03/2026
+    Repositorio : https://github.com/borgezmachado/2026-DWII
+-->
+<?php
+$nome         = "Borges";
+$pagina_atual = "projetos";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,6 +22,7 @@
 <body>
     
 <?php include 'includes/cabecalho.php'; ?>
+
 
 
 <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
