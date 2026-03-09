@@ -1,4 +1,4 @@
-<!-- includes/nav.php 
+<!-- includes/cabecalho.php 
     Disciplina : Desenvolvimento Web II (DWII)
     Aula : 03 - Arquitetura Web e Introdução ao PHP
     Autor : Felipe Borges
