@@ -21,7 +21,7 @@ $pagina_atual = "projetos";
 
 <body>
     
-<?php include 'includes/cabecalho.php'; ?>
+<?php include 'includes/nav.php'; ?>
 
 
 

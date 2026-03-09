@@ -25,7 +25,7 @@ $pagina_atual = "inicio";
 </head>
 <body>
 
-<?php include 'includes/cabecalho.php'; ?>
+<?php include 'includes/nav.php'; ?>
 
 
 <div class="hero" style="background: linear-gradient(135deg, #b300ff, #b300ff); color: white; text-align: center; padding: 60px 20px;">

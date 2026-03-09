@@ -23,7 +23,7 @@ $pagina_atual = "sobre";
 
 <body>
 
-<?php include 'includes/cabecalho.php'; ?>
+<?php include 'includes/nav.php'; ?>
 
 
 <div style="max-width: 800px; margin: 40px auto; padding: 0 20px;">
