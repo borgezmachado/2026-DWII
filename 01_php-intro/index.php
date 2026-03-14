@@ -21,11 +21,11 @@ $pagina_atual = "inicio";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio – <?php echo $nome; ?></title>
 
-    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../includes/style.css">cd ~/workspaces/2026-DWII
 </head>
 <body>
 
-<?php include 'includes/nav.php'; ?>
+<?php include '../includes/cabecalho.php'; ?>
 
 
 <div class="hero" style="background: linear-gradient(135deg, #b300ff, #b300ff); color: white; text-align: center; padding: 60px 20px;">
@@ -40,7 +40,7 @@ $pagina_atual = "inicio";
 
 </div>
 
-<?php include 'includes/rodape.php'; ?>
+<?php include '../includes/rodape.php'; ?>
 
 </body>
 </html>
