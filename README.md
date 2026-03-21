@@ -20,7 +20,7 @@ Repositório da disciplina **Desenvolvimento Web II** — 2026
 | `00_apresentacao/` | Página de apresentação pessoal (HTML + CSS) |
 | `01_php-intro/`    | Pagina de introdução ao PHP |
 | `02_formularios/`  | Pagina de formularios e obrigado PHP |
-
+| `03_pdo/`          | Pagina de conexão mariadb com php |
 ---
 
 ## 🌐 Páginas Publicadas
@@ -28,6 +28,7 @@ Repositório da disciplina **Desenvolvimento Web II** — 2026
 - 📄 [Página de Apresentação](00_apresentacao/index.html)
 - 📄 [Página de PHP](01_php-intro/index.php)
 - 📄 [Página de PHP FORMULARIOS](02_formularios/index.php)
+- 📄 [Página de PHP com mariadb](03_pdo/index.php)
 
 ---
 

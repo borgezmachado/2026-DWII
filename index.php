@@ -61,6 +61,16 @@ $aulas = [
         "cor"        => "#3ba34a",
         "conceitos"  => "$_POST, validação, htmlspecialchars(), header() + exit",
     ],
+    [
+        "numero"     => "05",
+        "nome"       => "Catálogo BD",
+        "descricao"  => "Conexão do mariadb no php ",
+        "link"       => "03_pdo/index.php",
+        "icone"      => "📠",
+        "cor"        => "#5f3ba3",
+        "conceitos"  => "",
+    ],
+
 
 ];
 
