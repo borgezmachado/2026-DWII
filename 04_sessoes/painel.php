@@ -3,13 +3,17 @@
  * Disciplina : Desenvolvimento Web II (DWII)
  * Aula       : 06 – Autenticação com sessões e controle de acesso
  * Arquivo    : 04_sessoes/painel.php
- * Autor      : [SEU NOME AQUI]
+ * Autor      : Felipe Borges
  */
 
 // --- VERSÃO REFATORADA ---
 // Importa as funções de autenticação e verifica se o usuário está logado
 require_once __DIR__ . '/includes/auth.php';
 requer_login();
+if (!isset($_SESSION['visitas'])) {
+    $_SESSION['visitas'] = 0;
+}
+$_SESSION['visitas']++;
 
 $titulo_pagina = 'Painel – Área Restrita';
 $caminho_raiz  = '../';

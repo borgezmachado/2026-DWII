@@ -3,8 +3,8 @@
  * Disciplina : Desenvolvimento Web II (DWII)
  * Aula       : 06 – Autenticação com sessões e controle de acesso
  * Arquivo    : 04_sessoes/login.php
- * Autor      : [SEU NOME AQUI]
- * Data       : [DATA DE HOJE]
+ * Autor      : Felipe Borges
+ * Data       : 23/03/2026
  */
 
 // session_start() DEVE ser a primeira coisa do arquivo

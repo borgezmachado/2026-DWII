@@ -3,7 +3,7 @@
  * Disciplina : Desenvolvimento Web II (DWII)
  * Aula       : 06 – Autenticação com sessões e controle de acesso
  * Arquivo    : 04_sessoes/includes/auth.php
- * Autor      : [SEU NOME AQUI]
+ * Autor      : Felipe Borges
  */
 
 /**
