@@ -30,7 +30,7 @@ Repositório da disciplina **Desenvolvimento Web II** — 2026
 - 📄 [Página de PHP](01_php-intro/index.php)
 - 📄 [Página de PHP FORMULARIOS](02_formularios/index.php)
 - 📄 [Página de PHP com mariadb](03_pdo/index.php)
-- 📄 [Página de PHP com mariadb](04_sessoes/painel.php)
+- 📄 [Página de login](04_sessoes/painel.php)
 
 ---
 
