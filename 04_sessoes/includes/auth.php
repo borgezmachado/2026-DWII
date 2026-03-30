@@ -8,20 +8,55 @@
 
 /**
  * requer_login()
- * Verifica se há sessão ativa.
- * Se não houver, redireciona para o login e encerra.
- * Chamar no topo de qualquer página protegida.
+ * NÍVEL B: Implementa contador de visitas.
+ * Verifica se há sessão ativa. Se não houver, redireciona para o login.
  */
 function requer_login(): void
 {
     if (session_status() === PHP_SESSION_NONE) {
-        session_start(); // iniciar se ainda não foi iniciada
+        session_start();
     }
 
     if (!isset($_SESSION['usuario'])) {
         header('Location: login.php');
         exit;
     }
+
+    // --- NÍVEL B: Número de visitas na sessão ---
+    // Incrementa a cada carregamento de página protegida
+    $_SESSION['visitas'] = ($_SESSION['visitas'] ?? 0) + 1;
+}
+
+/**
+ * redirecionar_se_logado()
+ * NÍVEL A: Evita que o usuário autenticado acesse a página de login novamente.
+ */
+function redirecionar_se_logado(): void
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if (isset($_SESSION['usuario'])) {
+        header('Location: painel.php');
+        exit;
+    }
+}
+
+/**
+ * get_flash()
+ * NÍVEL A: Retorna a mensagem flash e a remove da sessão imediatamente.
+ * Garante que a mensagem "Bem-vindo" apareça apenas uma vez.
+ */
+function get_flash(): string
+{
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    $flash = $_SESSION['flash'] ?? '';
+    unset($_SESSION['flash']); // Remove após a leitura
+    return $flash;
 }
 
 /**
@@ -30,6 +65,8 @@ function requer_login(): void
  */
 function usuario_logado(): string
 {
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
     return $_SESSION['usuario'] ?? '';
 }
-?>

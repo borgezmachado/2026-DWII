@@ -7,16 +7,22 @@
  * Data       : 23/03/2026
  */
 
-// session_start() DEVE ser a primeira coisa do arquivo
+// session_start() deve ser a primeira coisa
 session_start();
 
-// Se já estiver logado, ir direto ao painel
+// --- NÍVEL A: Redirecionar se já logado (redirecionar_se_logado) ---
 if (isset($_SESSION['usuario'])) {
-    header('Location: login.php'); // Verifique se aqui não deveria ser painel.php
+    header('Location: painel.php'); 
     exit;
 }
 
-// Credenciais válidas (fixas por enquanto – virão do BD na Aula 07)
+// --- NÍVEL A: Proteção contra força bruta (Verificação de Bloqueio) ---
+if (isset($_SESSION['bloqueado_ate']) && time() < $_SESSION['bloqueado_ate']) {
+    $restante = $_SESSION['bloqueado_ate'] - time();
+    die("Acesso bloqueado por excesso de tentativas. Tente novamente em $restante segundos.");
+}
+
+// Credenciais válidas
 $USUARIO_VALIDO = 'admin';
 $SENHA_VALIDA   = 'dwii2026';
 
@@ -26,21 +32,36 @@ $login = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $login = trim($_POST['usuario'] ?? '');
     $senha = trim($_POST['senha']   ?? '');
-    
-    // Continuação da lógica de validação...
-}
-if ($login === $USUARIO_VALIDO && $senha === $SENHA_VALIDA) {
-        // Credenciais corretas – novo ID de sessão após login (segurança)
+
+    if ($login === $USUARIO_VALIDO && $senha === $SENHA_VALIDA) {
+        // --- SUCESSO ---
         session_regenerate_id(true);
+        
         $_SESSION['usuario'] = $login;
-        $_SESSION['logado_em'] = date('d/m/Y \à\s H:i');
+        $_SESSION['logado_em'] = date('H:i:s'); // Horário para o Nível B
+        $_SESSION['visitas'] = 0;              // Inicializa visitas para o Nível B
+        
+        // --- NÍVEL A: Flash Message ---
+        $_SESSION['flash'] = "Bem-vindo, " . htmlspecialchars($login) . "!";
+        
+        // Reseta tentativas após sucesso
+        unset($_SESSION['tentativas']);
+        unset($_SESSION['bloqueado_ate']);
+
         header('Location: painel.php');
         exit;
     } else {
-        // Mensagem genérica – nunca diga qual campo está errado
-        $erro = 'Usuário ou senha incorretos.';
-    }
+        // --- NÍVEL A: Controle de Tentativas ---
+        $_SESSION['tentativas'] = ($_SESSION['tentativas'] ?? 0) + 1;
 
+        if ($_SESSION['tentativas'] >= 3) {
+            $_SESSION['bloqueado_ate'] = time() + 60; // Bloqueia por 60 seg
+            $erro = 'Muitas tentativas falhas. Você foi bloqueado por 1 minuto.';
+        } else {
+            $erro = 'Usuário ou senha incorretos.';
+        }
+    }
+}
 
 $titulo_pagina = 'Login – Área Restrita';
 $caminho_raiz  = '../';
@@ -53,7 +74,7 @@ $pagina_atual  = '';
 </head>
 <body>
 
-<div class="container" style="max-width: 420px;">
+<div class="container" style="max-width: 420px; margin-top: 50px;">
     <div class="form-container">
 
         <h1 class="titulo-secao" style="text-align: center; font-size: 22px;">
@@ -61,31 +82,38 @@ $pagina_atual  = '';
         </h1>
 
         <?php if ($erro): ?>
-            <div class="alerta-erro">
-                <p style="margin: 0; font-size: 14px;">
+            <div class="alerta-erro" style="background: #fee2e2; border: 1px solid #ef4444; padding: 10px; border-radius: 5px; margin-bottom: 15px;">
+                <p style="margin: 0; font-size: 14px; color: #b91c1c;">
                     🚫 <?php echo htmlspecialchars($erro); ?>
                 </p>
             </div>
         <?php endif; ?>
-        
 
         <form action="login.php" method="post">
-            <label>Usuário:</label>
-            <input type="text" 
-                   name="usuario" 
-                   value="<?php echo htmlspecialchars($login); ?>" 
-                   autocomplete="username">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;">Usuário:</label>
+                <input type="text" 
+                       name="usuario" 
+                       value="<?php echo htmlspecialchars($login); ?>" 
+                       autocomplete="username"
+                       style="width: 100%; padding: 8px; box-sizing: border-box;">
+            </div>
 
-            <label>Senha:</label>
-            <input type="password" 
-                   name="senha" 
-                   autocomplete="current-password">
+            <div style="margin-bottom: 15px;">
+                <label style="display: block; margin-bottom: 5px;">Senha:</label>
+                <input type="password" 
+                       name="senha" 
+                       autocomplete="current-password"
+                       style="width: 100%; padding: 8px; box-sizing: border-box;">
+            </div>
 
-            <button type="submit">Entrar</button>
+            <button type="submit" style="width: 100%; padding: 10px; background: #3b579d; color: white; border: none; cursor: pointer;">
+                Entrar
+            </button>
         </form>
 
         <p style="text-align: center; margin-top: 20px; font-size: 13px; color: #6b7280;">
-            <a href="../index.php" style="color: #3b579d;">← Voltar ao início</a>
+            <a href="../index.php" style="color: #3b579d; text-decoration: none;">← Voltar ao início</a>
         </p>
 
     </div>
