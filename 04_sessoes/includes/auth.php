@@ -18,12 +18,14 @@ function requer_login(): void
     }
 
     if (!isset($_SESSION['usuario'])) {
-        header('Location: login.php');
+        // CORREÇÃO: Caminho relativo para garantir que encontre o login 
+        // independente de qual pasta o usuário esteja tentando acessar.
+        // Se estiver no /05_crud/, ele volta um nível e entra no /04_sessoes/
+        header('Location: /04_sessoes/publico.php');
         exit;
     }
 
     // --- NÍVEL B: Número de visitas na sessão ---
-    // Incrementa a cada carregamento de página protegida
     $_SESSION['visitas'] = ($_SESSION['visitas'] ?? 0) + 1;
 }
 
@@ -38,7 +40,8 @@ function redirecionar_se_logado(): void
     }
 
     if (isset($_SESSION['usuario'])) {
-        header('Location: painel.php');
+        // Ajustado para o painel dentro de sessoes
+        header('Location: /04_sessoes/painel.php');
         exit;
     }
 }
@@ -46,7 +49,6 @@ function redirecionar_se_logado(): void
 /**
  * get_flash()
  * NÍVEL A: Retorna a mensagem flash e a remove da sessão imediatamente.
- * Garante que a mensagem "Bem-vindo" apareça apenas uma vez.
  */
 function get_flash(): string
 {
@@ -55,7 +57,7 @@ function get_flash(): string
     }
 
     $flash = $_SESSION['flash'] ?? '';
-    unset($_SESSION['flash']); // Remove após a leitura
+    unset($_SESSION['flash']); 
     return $flash;
 }
 

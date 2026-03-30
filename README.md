@@ -22,6 +22,7 @@ Repositório da disciplina **Desenvolvimento Web II** — 2026
 | `02_formularios/`  | Pagina de formularios e obrigado PHP |
 | `03_pdo/`          | Pagina de conexão mariadb com php |
 | `04_sessoes/`      | Pagina de login |
+| `05_crud/`         | Pagina de CRUD|
 ---
 
 ## 🌐 Páginas Publicadas
@@ -31,6 +32,7 @@ Repositório da disciplina **Desenvolvimento Web II** — 2026
 - 📄 [Página de PHP FORMULARIOS](02_formularios/index.php)
 - 📄 [Página de PHP com mariadb](03_pdo/index.php)
 - 📄 [Página de login](04_sessoes/painel.php)
+- 📄 [Página de CRUD](05_crud/index.php)
 
 ---
 
