@@ -59,7 +59,7 @@ $aulas = [
         "link"       => "02_formularios/contato.php",
         "icone"      => "📬",
         "cor"        => "#3ba34a",
-        "conceitos"  => "$_POST, validação, htmlspecialchars(), header() + exit",
+        "conceitos"  => "_POST, validação, htmlspecialchars(), header() + exit",
     ],
     [
         "numero"     => "05",
@@ -68,8 +68,28 @@ $aulas = [
         "link"       => "03_pdo/index.php",
         "icone"      => "📠",
         "cor"        => "#5f3ba3",
-        "conceitos"  => "",
+        "conceitos"  => "mariadb",
     ],
+    [
+        "numero"     => "06",
+        "nome"       => "login",
+        "descricao"  => "login para acesso ao CRUD",
+        "link"       => "04_sessoes/login.php",
+        "icone"      => "🔓",
+        "cor"        => "#ff0000",
+        "conceitos"  => "_SESSION",
+    ],
+    [
+        "numero"     => "07",
+        "nome"       => "CRUD",
+        "descricao"  => "CRUD com dados reais de trabalhos meus",
+        "link"       => "05_crud/index.php",
+        "icone"      => "🗂️",
+        "cor"        => "#3700ff",
+        "conceitos"  => "sql_count , e etc",
+    ],
+    
+
 
 
 ];
