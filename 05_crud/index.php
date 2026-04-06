@@ -5,7 +5,7 @@ require_once __DIR__ . '/includes/conexao.php';
 
 $pdo = conectar();
 
-// --- Lógica de Busca e Paginação (Mantida do seu original) ---
+// --- Lógica de Busca e Paginação ---
 $busca = trim($_GET['busca'] ?? '');
 $itens_por_pagina = 3;
 $pagina_atual = max(1, (int)($_GET['pagina'] ?? 1));
@@ -31,13 +31,11 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute($params);
 $projetos = $stmt->fetchAll();
 
-// --- NOVO: Detecção de mensagens de feedback (Aula 08) ---
+// --- Detecção de mensagens de feedback ---
 $cadastroOk = isset($_GET['cadastro']) && $_GET['cadastro'] === 'ok';
 $editadoOk  = isset($_GET['editado'])  && $_GET['editado']  === 'ok';
 $excluidoOk = isset($_GET['excluido']) && $_GET['excluido'] === 'ok';
-
-// Erros redirecionados por editar.php e excluir.php
-$erroMsg = isset($_GET['erro']) ? $_GET['erro'] : '';
+$erroMsg    = $_GET['erro'] ?? '';
 
 $titulo_pagina = 'Meus Projetos — Portfólio';
 ?>
@@ -52,9 +50,12 @@ $titulo_pagina = 'Meus Projetos — Portfólio';
         .pagination a.active { background: #3b579d; color: white; }
         .busca-container { margin-bottom: 25px; display: flex; gap: 10px; }
         .busca-container input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
-        /* Estilos para alertas */
-        .alerta-sucesso { background-color: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #c3e6cb; }
-        .alerta-erro { background-color: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid #f5c6cb; }
+        
+        /* Estilos para alertas diferenciados */
+        .alerta { padding: 15px; margin-bottom: 20px; border-radius: 4px; border: 1px solid; }
+        .alerta-sucesso { background-color: #d4edda; color: #155724; border-color: #c3e6cb; } /* Verde */
+        .alerta-info { background-color: #d1ecf1; color: #0c5460; border-color: #bee5eb; }    /* Azul */
+        .alerta-erro { background-color: #f8d7da; color: #721c24; border-color: #f5c6cb; }    /* Vermelho */
     </style>
 </head>
 <body>
@@ -65,21 +66,23 @@ $titulo_pagina = 'Meus Projetos — Portfólio';
     </div>
 
     <?php if ($cadastroOk): ?>
-        <div class="alerta-sucesso"><p style="margin: 0;">✅ Projeto cadastrado com sucesso!</p></div>
+        <div class="alerta alerta-sucesso">✅ Projeto cadastrado com sucesso!</div>
     <?php endif; ?>
 
     <?php if ($editadoOk): ?>
-        <div class="alerta-sucesso"><p style="margin: 0;">✅ Projeto atualizado com sucesso!</p></div>
+        <div class="alerta alerta-sucesso">📝 Projeto atualizado com sucesso!</div>
     <?php endif; ?>
 
     <?php if ($excluidoOk): ?>
-        <div class="alerta-sucesso"><p style="margin: 0;">🗑️ Projeto removido com sucesso!</p></div>
+        <div class="alerta alerta-info">🗑️ Projeto removido da base de dados.</div>
     <?php endif; ?>
 
     <?php if ($erroMsg === 'nao_encontrado'): ?>
-        <div class="alerta-erro"><p style="margin: 0;">⚠️ Projeto não encontrado. Ele pode já ter sido removido.</p></div>
+        <div class="alerta alerta-erro">⚠️ <strong>Erro:</strong> O projeto solicitado não existe ou já foi excluído.</div>
     <?php elseif ($erroMsg === 'id_invalido'): ?>
-        <div class="alerta-erro"><p style="margin: 0;">⚠️ Requisição inválida.</p></div>
+        <div class="alerta alerta-erro">⚠️ <strong>Erro:</strong> Identificador de projeto inválido.</div>
+    <?php elseif ($erroMsg === 'ano_invalido'): ?>
+        <div class="alerta alerta-erro">⚠️ <strong>Erro de Validação:</strong> O ano deve estar entre 2000 e <?php echo date('Y'); ?>.</div>
     <?php endif; ?>
 
     <form class="busca-container" method="GET">

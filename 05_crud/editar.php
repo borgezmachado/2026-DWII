@@ -61,6 +61,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Validação
     if ($nome === '' || $descricao === '' || $tecnologias === '') {
         $erro = 'Preencha todos os campos obrigatórios.';
+    } 
+    // Validação do campo ano (Nível B/A)
+    elseif ($ano < 2000 || $ano > (int)date('Y')) {
+        $erro = 'O ano deve ser entre 2000 e ' . date('Y') . '.';
     }
 
     // UPDATE - só executa se não há erro
@@ -126,7 +130,7 @@ $pagina_atual  = '';
         <div class="campo">
             <label class="label-campo">Nome do Projeto *</label>
             <input type="text" name="nome" class="input-texto" 
-                   value="<?php echo htmlspecialchars($projeto['nome']); ?>">
+                    value="<?php echo htmlspecialchars($projeto['nome']); ?>">
         </div>
 
         <div class="campo">
@@ -139,20 +143,20 @@ $pagina_atual  = '';
         <div class="campo">
             <label class="label-campo">Tecnologias *</label>
             <input type="text" name="tecnologias" class="input-texto" 
-                   value="<?php echo htmlspecialchars($projeto['tecnologias']); ?>">
+                    value="<?php echo htmlspecialchars($projeto['tecnologias']); ?>">
         </div>
 
         <div class="campo">
             <label class="label-campo">Link GitHub (opcional)</label>
             <input type="url" name="link_github" class="input-texto" 
-                   value="<?php echo htmlspecialchars($projeto['link_github'] ?? ''); ?>">
+                    value="<?php echo htmlspecialchars($projeto['link_github'] ?? ''); ?>">
         </div>
 
         <div class="campo">
             <label class="label-campo">Ano *</label>
             <input type="number" name="ano" class="input-texto" 
-                   value="<?php echo htmlspecialchars((int) $projeto['ano']); ?>"
-                   min="2000" max="2099">
+                    value="<?php echo htmlspecialchars((int) $projeto['ano']); ?>"
+                    min="2000" max="<?php echo date('Y'); ?>">
         </div>
 
         <div style="display: flex; gap: 12px; margin-top: 8px;">

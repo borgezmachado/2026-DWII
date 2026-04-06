@@ -3,8 +3,8 @@
  * Disciplina : Desenvolvimento Web II (DWII)
  * Aula       : 07 — CRUD: Create e Read
  * Arquivo    : 05_crud/cadastrar.php
- * Autor      : [SEU NOME AQUI]
- * Data       : [DATA DE HOJE]
+ * Autor      : Felipe Borges
+ * Data       : 31/03/2026
  * Descrição  : Exibe o formulário de cadastro e processa o INSERT
  */
 
