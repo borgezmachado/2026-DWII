@@ -51,9 +51,15 @@ $pagina_atual  = 'painel';
     </div>
 
     <div class="card" style="margin-top: 20px;">
-        <h3>🚀 Funcionalidades</h3>
-        <p>Você pode acessar sua outra página protegida aqui:</p>
-        <a href="perfil.php" style="color: #3b579d; font-weight: bold;">➡️ Ver meu Perfil (Página Protegida 2)</a>
+       <h3> 📊 Painel de Controle </h3>
+          <p> Este conteúdo so é visivel para usuários autenticados.
+    </p>
+    <p>
+        <a href="perfil.php" style="color: #3b579d; font-weight: bold;">➡️ Ver meu Perfil (Página Protegida 2)</a>   
+    </p>
+    <a href = "../05_crud/index.php" class = "btn-primario">
+        📂 Gerenciar Projetos
+    </a>
     </div>
 
     <p style="margin-top: 30px; text-align: center;">
