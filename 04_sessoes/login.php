@@ -72,6 +72,10 @@ $pagina_atual  = '';
 <head>
     <?php require_once __DIR__ . '/../includes/cabecalho.php'; ?>
 </head>
+<div class="page-transition" id="transition"></div>
+<div class="cursor-ki" id="cursor"></div>
+
+
 <body>
 
 <div class="container" style="max-width: 420px; margin-top: 50px;">
