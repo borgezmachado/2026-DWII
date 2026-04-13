@@ -1,0 +1,288 @@
+/* ════════════════════════════════════════════════
+ * ESTILO GLOBAL — PORTFÓLIO FELIPE BORGES
+ * Refatorado para melhor organização e manutenção
+ * ════════════════════════════════════════════════ */
+
+/* ── Variáveis (facilitam manutenção) ─────────── */
+:root {
+  --cor-primaria: #3b579d;
+  --cor-secundaria: #b300ff;
+  --cor-destaque: #f0b341;
+  --cor-fundo: #f3f4f6;
+  --cor-texto: #111827;
+  --cor-texto-suave: #6b7280;
+  --cor-branco: #ffffff;
+
+  --radius: 8px;
+  --sombra: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* ── Reset ───────────────────────────────────── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ────────────────────────────────────── */
+body {
+  font-family: Arial, sans-serif;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.6;
+}
+
+/* ── Container ───────────────────────────────── */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* ── Títulos ─────────────────────────────────── */
+h1.titulo-secao {
+  color: var(--cor-primaria);
+  margin-bottom: 24px;
+}
+
+/* ── Navegação ───────────────────────────────── */
+nav {
+  background: var(--cor-secundaria);
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  opacity: 0.8;
+}
+
+nav a.ativo {
+  color: var(--cor-destaque);
+}
+
+nav a.ativo::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--cor-destaque);
+  margin-top: 4px;
+}
+
+/* ── Cards ───────────────────────────────────── */
+.card {
+  background: var(--cor-branco);
+  padding: 28px;
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  border-left: 4px solid var(--cor-primaria);
+  box-shadow: var(--sombra);
+  transition: transform 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  color: var(--cor-primaria);
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #374151;
+}
+
+/* ── Formulários ─────────────────────────────── */
+.form-container {
+  background: var(--cor-branco);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 16px 0 6px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--cor-primaria);
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Botão */
+button[type="submit"] {
+  margin-top: 20px;
+  background: var(--cor-primaria);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 6px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button[type="submit"]:hover {
+  background: #2a4080;
+}
+
+/* ── Alertas ─────────────────────────────────── */
+.alerta-erro,
+.alerta-sucesso {
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 18px 22px;
+  margin-top: 20px;
+}
+
+.alerta-erro {
+  background: #fce8e8;
+  border-left: 4px solid #cf1c21;
+}
+
+.alerta-erro h3 {
+  color: #cf1c21;
+}
+
+.alerta-sucesso {
+  background: #e9f5ea;
+  border-left: 4px solid #3ba34a;
+}
+
+.alerta-sucesso h3 {
+  color: #3ba34a;
+}
+
+/* ── Apresentação (sua página inicial) ───────── */
+.apresentacao {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Foto */
+.foto-container {
+  flex: 1 1 200px;
+  text-align: center;
+}
+
+.foto-perfil {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: var(--sombra);
+}
+
+/* Texto */
+.texto-container {
+  flex: 2 1 400px;
+}
+
+.texto-container h2 {
+  margin-bottom: 12px;
+  color: var(--cor-primaria);
+}
+
+.texto-container p {
+  margin-bottom: 20px;
+  color: #374151;
+}
+
+/* Cards de info */
+.info-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.info-card {
+  background: var(--cor-branco);
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  box-shadow: var(--sombra);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.card-icon {
+  font-size: 18px;
+}
+
+/* ── Rodapé ─────────────────────────────────── */
+footer {
+  background: #111;
+  color: var(--cor-texto-suave);
+  text-align: center;
+  padding: 20px;
+  margin-top: 60px;
+  font-size: 14px;
+}
+
+/* ── Confirmação ─────────────────────────────── */
+.confirmacao {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.confirmacao-icone {
+  font-size: 60px;
+}
+
+.confirmacao-titulo {
+  color: #3ba34a;
+  margin: 16px 0 8px;
+}
+
+.confirmacao-texto {
+  color: #374151;
+  margin-bottom: 24px;
+}
+
+/* ── Responsividade ─────────────────────────── */
+@media (max-width: 768px) {
+  .apresentacao {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .texto-container {
+    text-align: center;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
