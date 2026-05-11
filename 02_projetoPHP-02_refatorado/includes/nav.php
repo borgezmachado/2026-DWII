@@ -56,7 +56,7 @@ $logado = isset($_SESSION['usuario']);
        <?php echo menu_class("contato", $pagina_atual); ?>>
        📬 Contato
     </a>
-     <a href="<?php echo $caminho_raiz; ?>index.php" 
+     <a href="<?php echo $caminho_raiz; ?>catalogo.php" 
        <?php echo menu_class("catalogo", $pagina_atual); ?>>
        📠 Catalogo
     </a>
