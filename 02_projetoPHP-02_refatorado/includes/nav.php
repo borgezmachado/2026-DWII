@@ -70,10 +70,11 @@ $logado = isset($_SESSION['usuario']);
     
       🚪 Sair
     </a>
+    <?php endif; ?>
     <php else: ?>
         <a href="<?php echo $caminho_raiz; ?>login.php" 
        <?php echo menu_class("login", $pagina_atual); ?>>
        🔓 Login
     </a>
-    <?php endif; ?>
+    
    </nav>
