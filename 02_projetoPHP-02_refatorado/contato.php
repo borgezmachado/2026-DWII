@@ -18,7 +18,7 @@
 // montar o <title>, o <link> do CSS e o item ativo no menu.
 $nome = "Felipe Borges";
 $pagina_atual = "contato";
-$caminho_raiz = "../";
+$caminho_raiz = "./";
 $titulo_pagina = "Contato";
 
 
@@ -68,13 +68,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $nome_visitante = $_POST['nome_visitante'] ?? '';
 $mensagem = $_POST['mensagem'] ?? '';
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos</title>
+
+    <link rel="stylesheet" href="./includes/style.css">
+</head>
+
 <!--
     cabecalho.php gera tudo até <body> - incluindo:
         <!DOCKTYPE html>, <html>, <head>, <link rel="stylesheet"
         href="../includes/style.css">, </head>, <body>, <header>, <nav>
     Por isso não repetimos essas tags aqui.
 -->
-<?php include '../includes/cabecalho.php'; ?>
+<?php include './includes/cabecalho.php'; ?>
 
     <div class="container">
         <h1 class="titulo-secao">📮 Formulário de Contato</h1>
@@ -113,4 +123,4 @@ $mensagem = $_POST['mensagem'] ?? '';
 <?php endif; ?>
     </div>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include './includes/rodape.php'; ?>

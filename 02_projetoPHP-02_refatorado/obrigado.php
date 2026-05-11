@@ -15,17 +15,26 @@
  */
 
 // —- VARIÁVEIS DO TEMPLATE ——————————————————————————————————————————————
-$nome           = "[SEU NOME]";
+$nome           = "Felipe Borges";
 $pagina_atual   = "contato";  // mantém "contato" ativo no menu
-$caminho_raiz   = "../";
+$caminho_raiz   = "./";
 $titulo_pagina  = "Obrigado!";
 
 // Recebe o nome enviado pelo header() em contato.php
 // ?? 'visitante' garante fallback se alguém acessar a URL diretamente
 $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
 ?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projetos</title>
 
-<?php include '../includes/cabecalho.php'; ?>
+    <link rel="stylesheet" href="./includes/style.css">
+</head>
+
+<?php include './includes/cabecalho.php'; ?>
 <div class="container confirmacao">
     <p class="confirmacao-icone">✅</p>
     <h1 class="confirmacao-titulo">
@@ -37,4 +46,4 @@ $nome_visitante = htmlspecialchars($_GET['nome'] ?? 'visitante');
     <a href="contato.php" class="btn">← Enviar outra mensagem</a>
 </div>
 
-<?php include '../includes/rodape.php'; ?>
+<?php include './includes/rodape.php'; ?>
